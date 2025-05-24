@@ -27,20 +27,20 @@ let cardsWon = [];
 let board;
 let resultView;
 
-// Variáveis de áudio no escopo global
+
 const fundoAudio = document.getElementById("fundoAudio");
 const flipSound = document.getElementById("flipSound");
 const matchSound = document.getElementById("matchSound");
 const winSound = document.getElementById("winSound");
 
-// Define o volume padrão para a música de fundo
+
 if (fundoAudio) fundoAudio.volume = 0.5;
 
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeGame();
 
-    // Inicia a música de fundo após a primeira interação do usuário
+
     document.addEventListener('click', iniciarMusica);
     document.addEventListener('touchstart', iniciarMusica);
 });
@@ -50,7 +50,7 @@ function iniciarMusica() {
         fundoAudio.play()
             .then(() => {
                 console.log("Música de fundo iniciada após interação do usuário.");
-                // Remove os listeners para não iniciar a música múltiplas vezes
+               
                 document.removeEventListener('click', iniciarMusica);
                 document.removeEventListener('touchstart', iniciarMusica);
             })
@@ -66,7 +66,7 @@ function recarregarPagina() {
 }
 
 function initializeGame() {
-    // Criar uma cópia fresca dos dados das cartas
+
     cardsData = [...cardsData];
     cardsData.sort(() => 0.5 - Math.random());
     cardsChosen = [];
@@ -77,7 +77,7 @@ function initializeGame() {
     board.innerHTML = '';
     resultView.textContent = 'Pares Encontrados: 0';
     createBoard();
-    //fundoAudio.play();  // Removemos daqui
+   
 }
 
 function createBoard() {
@@ -136,11 +136,11 @@ function checkForMatch() {
         resultView.textContent = 'Parabéns! Você conseguiu encontrar todas as cartas';
 
         if (winSound) {
-            fundoAudio.pause(); // Pausa o áudio de fundo
+            fundoAudio.pause(); 
             winSound.currentTime = 0;
             winSound.play();
             winSound.addEventListener('ended', function() {
-                fundoAudio.play(); // Retoma o áudio de fundo após a vitória
+                fundoAudio.play(); 
             });
         }
     }
@@ -164,12 +164,12 @@ function flipCard() {
 }
 
 function resetGame() {
-    // Limpa completamente o estado do jogo
+  
     cards = [];
     cardsChosen = [];
     cardsChosenId = [];
     cardsWon = [];
 
-    // Reconstroi o tabuleiro do zero
+   
     initializeGame();
 }
